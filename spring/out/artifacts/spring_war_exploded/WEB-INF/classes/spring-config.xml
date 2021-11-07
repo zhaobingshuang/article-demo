@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/aop  http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+http://www.springframework.org/schema/tx  http://www.springframework.org/schema/tx/spring-tx-3.0.xsd" default-autowire="byType">
+        <!--        <bean id="myTestBean" name="bean11" class="org.example.MyTestBean">-->
+        <!--        </bean>-->
+
+        <!--        <bean id="car" class="org.example.CarFactoryBean">-->
+        <!--                <property name="carInfo" value="超级跑车,400,100000"/>-->
+        <!--                <property name="a" ref="conversionService"-->
+        <!--        </bean>-->
+        <aop:aspectj-autoproxy/>
+
+
+        <bean id="test" class="org.example.TestBean"/>
+        <bean class="org.example.AspectJTest"/>
+
+
+
+        <tx:annotation-driven />
+
+        <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+                <property name="dataSource" ref="dataSource"/>
+        </bean>
+
+        <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+                <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/test?serverTimezone=GMT%2B8"/>
+                <property name="username" value="root"/>
+                <property name="password" value="root"/>
+                <property name="initialSize" value="1"/>
+                <property name="maxIdle" value="2"/>
+                <property name="minIdle" value="1"/>
+        </bean>
+
+<!--        <bean id="dataSource1" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">-->
+<!--                <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>-->
+<!--                <property name="url" value="jdbc:mysql://localhost:3306/test?serverTimezone=GMT%2B8"/>-->
+<!--                <property name="username" value="root"/>-->
+<!--                <property name="password" value="root"/>-->
+<!--                <property name="initialSize" value="1"/>-->
+<!--                <property name="maxIdle" value="2"/>-->
+<!--                <property name="minIdle" value="1"/>-->
+<!--        </bean>-->
+
+        <bean id="userService" class="org.example.tx.UserServiceImpl">
+<!--                <property name="dataSource" ref="dataSource" />-->
+        </bean>
+</beans>

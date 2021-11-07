@@ -1,0 +1,14 @@
+spring:
+  mail:
+    protocol: smtps
+    host: smtp.mxhichina.com
+    port: 465
+    username: service@lasoplanet.com
+    password: Laso@18.com
+    properties:
+      mail.smtps.connectiontimeout: 150000
+      mail.smtps.timeout: 250000
+      mail.smtps.writetimeout: 5000
+      mail.smtp.auth: true
+      mail.smtp.auth.starttls.required: true
+      mail.smtp.auth.starttls.enable: true

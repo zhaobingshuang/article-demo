@@ -1,0 +1,44 @@
+package com.company.leetcode.q0111;
+
+/**
+ * 111. 二叉树的最小深度
+ * 深度优先
+ *
+ * @author 赵丙双
+ * @since 2021.10.19
+ */
+public class Solution2 {
+
+    public int minDepth(TreeNode root) {
+        if (root == null) {
+            return 0;
+        } else if (root.left == null && root.right == null) {
+            return 1;
+        } else if (root.left == null){
+            return minDepth(root.right) + 1;
+        }  else if (root.right == null){
+            return minDepth(root.left) + 1;
+        } else {
+            return Integer.min(minDepth(root.left), minDepth(root.right)) + 1;
+        }
+    }
+
+    public class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode() {
+        }
+
+        TreeNode(int val) {
+            this.val = val;
+        }
+
+        TreeNode(int val, TreeNode left, TreeNode right) {
+            this.val = val;
+            this.left = left;
+            this.right = right;
+        }
+    }
+}
